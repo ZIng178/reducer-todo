@@ -1,5 +1,4 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
 import AppState from "./components/AppState"
 
@@ -7,6 +6,7 @@ import AppState from "./components/AppState"
 function App() {
   return (
     <div className="App">
+    <h1> MY REDUCER TO-DO APP </h1>
     <AppState/>
     </div>
   );

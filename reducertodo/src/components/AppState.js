@@ -16,9 +16,15 @@ const AddForm = () => {
       completed: false
     });
   };
-  const handleClear = event => {
-    event.preventDefault();
-  };
+
+  const toggleChange= todo=>{
+      dispatch({type:"TOGGLE", payload: todo})
+  }
+
+
+  const clearItem=todo=>{
+      dispatch({type: "CLEAR"})
+  }
 
   const handleChange = event => {
     setToDoInput({ ...todoInput, item: event.target.value, id: Date.now() });
@@ -34,12 +40,15 @@ const AddForm = () => {
           value={todoInput.item}
         />
         <button onClick={handleSubmit}>Add</button>
-        <button onClick={handleClear}>Clear</button>
+        <button onClick={clearItem}>Clear</button> 
       </form>
 
-      {state.map(todo => (
-        <div>{todo.item}</div>
-      ))}
+      {state.map(todo => 
+        <div onClick={()=>toggleChange(todo)}
+        className={todo.completed ? "done" : ""}>
+        {todo.item}
+        </div>
+      )}
     </React.Fragment>
   );
 };
